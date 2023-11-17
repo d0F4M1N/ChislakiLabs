@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\visualstudio\вeweqwww\вeweqwww\Source.cpp(120,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\visualstudio\вeweqwww\вeweqwww\Source.cpp(125,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  вeweqwww.vcxproj -> D:\visualstudio\вeweqwww\x64\Debug\вeweqwww.exe

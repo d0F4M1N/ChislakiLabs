@@ -1,6 +1,0 @@
-﻿  Source.cpp
-D:\visualstudio\Lab1\Lab1\Source.cpp(33,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\visualstudio\Lab1\Lab1\Source.cpp(61,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\visualstudio\Lab1\Lab1\Source.cpp(100,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\visualstudio\Lab1\Lab1\Source.cpp(124,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Lab1.vcxproj -> D:\visualstudio\Lab1\x64\Debug\Lab1.exe

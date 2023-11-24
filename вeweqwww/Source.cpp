@@ -32,7 +32,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << "x" << (i + 1) << " = " << xVect[i] << "; ";
     }
-    // residual vector (вектор невязки)
+    // residual vector (ГўГҐГЄГІГ®Г° Г­ГҐГўГїГ§ГЄГЁ)
     initialisationConst(matrix, bVect);
     residVector(matrix, residVect, bVect, xVect, n);
     //---------------------------------------------------------
@@ -42,19 +42,22 @@ int main() {
         cout << "x" << (i + 1) << " = " << xVect2[i] << "; ";
     }
     cout << endl;
+    double  xMod1 = 0, xMod2 = 0, pogreshnost;
+    for (int i = 0; i < n; i++) {
+        cout << "x" << (i + 1) << " = " << xVect2[i] << "; ";
+    }
+    cout << endl;
     double modul1, xMod1 = 0, modul2, xMod2 = 0, pogreshnost;
     for (int i = 0; i <= 2; i++) {
-        xMod1 += pow((xVect2[i] - xVect[i]), 2);
+        xMod1 += abs(xVect2[i] - xVect[i]);
     }
     for (int i = 0; i <= 2; i++) {
-        xMod2 += pow(xVect[i], 2);
+        xMod2 += abs(xVect[i]);
     }
-    modul1 = pow((xMod1), 0.5);
-    modul2 = pow((xMod2), 0.5);
-    pogreshnost = modul1 / modul2;
+    pogreshnost = xMod1 / xMod2 ;
     cout << "Pogreshnost= ";
     cout << pogreshnost << endl;
-    // удаление массивов
+    // ГіГ¤Г Г«ГҐГ­ГЁГҐ Г¬Г Г±Г±ГЁГўГ®Гў
     for (int i = 0; i < n; i++) {
         delete[]matrix[i];
     }
@@ -79,12 +82,12 @@ double* gauss(double** matrix, double* y, const int n, int accur)
 {
     double* xVect, max, roundH;
     int k, index, round;
-    const double eps = 0.00001;  // точность
+    const double eps = 0.00001;  // ГІГ®Г·Г­Г®Г±ГІГј
     xVect = new double[n];
     k = 0;
     while (k < n)
     {
-        // Поиск максимума
+        // ГЏГ®ГЁГ±ГЄ Г¬Г ГЄГ±ГЁГ¬ГіГ¬Г 
         max = abs(matrix[k][k]);
         index = k;
         for (int i = k + 1; i < n; i++)
@@ -98,9 +101,9 @@ double* gauss(double** matrix, double* y, const int n, int accur)
 
         if (max < eps)
         {
-            // диаг элем = 0?
-            cout << "Решение получить невозможно из-за нулевого столбца ";
-            cout << index << " матрицы A" << endl;
+            // Г¤ГЁГ ГЈ ГЅГ«ГҐГ¬ = 0?
+            cout << "ГђГҐГёГҐГ­ГЁГҐ ГЇГ®Г«ГіГ·ГЁГІГј Г­ГҐГўГ®Г§Г¬Г®Г¦Г­Г® ГЁГ§-Г§Г  Г­ГіГ«ГҐГўГ®ГЈГ® Г±ГІГ®Г«ГЎГ¶Г  ";
+            cout << index << " Г¬Г ГІГ°ГЁГ¶Г» A" << endl;
             return 0;
         }
         for (int j = 0; j < n; j++)
@@ -110,11 +113,11 @@ double* gauss(double** matrix, double* y, const int n, int accur)
         swap(y[k], y[index]);
         if (k > 0)
             outputMatrix(matrix, y, n);
-        // Нормализация уравнений
+        // ГЌГ®Г°Г¬Г Г«ГЁГ§Г Г¶ГЁГї ГіГ°Г ГўГ­ГҐГ­ГЁГ©
         for (int i = k; i < n; i++)
         {
             double temp = matrix[i][k];
-            if (abs(temp) < eps) continue; // для нулевого коэффициента пропустить
+            if (abs(temp) < eps) continue; // Г¤Г«Гї Г­ГіГ«ГҐГўГ®ГЈГ® ГЄГ®ГЅГґГґГЁГ¶ГЁГҐГ­ГІГ  ГЇГ°Г®ГЇГіГ±ГІГЁГІГј
             for (int j = 0; j < n; j++) {
                 matrix[i][j] = matrix[i][j] / temp;
                 round = matrix[i][j] * accur;
@@ -125,7 +128,7 @@ double* gauss(double** matrix, double* y, const int n, int accur)
             round = y[i] * accur;
             roundH = round;
             y[i] = roundH / accur;
-            if (i == k)  continue; // уравнение не вычитать само из себя
+            if (i == k)  continue; // ГіГ°Г ГўГ­ГҐГ­ГЁГҐ Г­ГҐ ГўГ»Г·ГЁГІГ ГІГј Г±Г Г¬Г® ГЁГ§ Г±ГҐГЎГї
             for (int j = 0; j < n; j++)
                 matrix[i][j] = matrix[i][j] - matrix[k][j];
             y[i] = y[i] - y[k];
@@ -135,7 +138,7 @@ double* gauss(double** matrix, double* y, const int n, int accur)
 
         k++;
     }
-    // обратная подстановка
+    // Г®ГЎГ°Г ГІГ­Г Гї ГЇГ®Г¤Г±ГІГ Г­Г®ГўГЄГ 
     for (k = n - 1; k >= 0; k--)
     {
         xVect[k] = y[k];

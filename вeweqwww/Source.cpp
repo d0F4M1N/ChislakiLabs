@@ -32,7 +32,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << "x" << (i + 1) << " = " << xVect[i] << "; ";
     }
-    // residual vector (âåêòîð íåâÿçêè)
+    // residual vector (вектор невязки)
     initialisationConst(matrix, bVect);
     residVector(matrix, residVect, bVect, xVect, n);
     //---------------------------------------------------------
@@ -42,21 +42,22 @@ int main() {
         cout << "x" << (i + 1) << " = " << xVect2[i] << "; ";
     }
     cout << endl;
-    double  xMod1 = 0, xMod2 = 0, pogreshnost;
+    double xMod1 = 0, xMod2 = 0, pogreshnost;
     for (int i = 0; i < n; i++) {
         cout << "x" << (i + 1) << " = " << xVect2[i] << "; ";
     }
     cout << endl;
-    double modul1, xMod1 = 0, modul2, xMod2 = 0, pogreshnost;
-    for (int i = 0; i <= 2; i++) {
+    double modul1, modul2;
+    for (int i = 0; i < n; i++) {
         xMod1 += abs(xVect2[i] - xVect[i]);
     }
-    for (int i = 0; i <= 2; i++) {
+    for (int i = 0; i < n; i++) {
         xMod2 += abs(xVect[i]);
     }
-    pogreshnost = xMod1 / xMod2 ;
+    pogreshnost = xMod1 / xMod2;
     cout << "Pogreshnost= ";
     cout << pogreshnost << endl;
+
     // óäàëåíèå ìàññèâîâ
     for (int i = 0; i < n; i++) {
         delete[]matrix[i];

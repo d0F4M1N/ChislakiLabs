@@ -148,9 +148,9 @@ double* gauss(double** matrix, double* y, const int n, int accur)
     return xVect;
 }
 void initialisationConst(double** matrix, double* y) {
-    matrix[0][0] = 2.30; matrix[0][1] = 3.50; matrix[0][2] = 1.70;
-    matrix[1][0] = 5.70; matrix[1][1] = -2.70; matrix[1][2] = 2.30;
-    matrix[2][0] = -0.80; matrix[2][1] = 5.30; matrix[2][2] = -1.80;
+    matrix[0][0] = 2.30; matrix[0][1] = 5.70; matrix[0][2] = -0.80;
+    matrix[1][0] = 3.50; matrix[1][1] = -2.70; matrix[1][2] = 5.30;
+    matrix[2][0] = 1.70; matrix[2][1] = 2.30; matrix[2][2] = -1.80;
     y[0] = -6.49; y[1] = 19.20; y[2] = -5.09;
 }
 void residVectorMax(double* resVect, int n) {

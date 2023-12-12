@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\VSProjects\artem\5 laba\Source.cpp(88,85): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+D:\VSProjects\artem\5 laba\Source.cpp(88,82): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  5 laba.vcxproj -> D:\VSProjects\artem\5 laba\x64\Debug\5 laba.exe
